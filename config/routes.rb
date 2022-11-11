@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   # get "lists/42", to: "list#42"
   # get "list/new", to: "list#new", as: :new_task
   # post "lists", to: "list#create",
-  resources :lists, only: [:index, :show, :new, :create] do 
+  root to: "lists#index"
+  resources :lists, expect: [:edit, :update] do 
     resources :bookmarks, only: [:new, :create]
   end
   resources :bookmarks, only: :destroy
